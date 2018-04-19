@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Our input file is the first argument passed to the script
-INPUT=$1
+# but give me the option to specificy the csv after beginning the script
 
-if [ -z $1 ]; then
-    echo -e "Please specify a csv file.\n"
-    exit 1;
+if [ -z "$1" ]; then
+    echo -n "Please specify a csv file.: " && read INPUT
+else
+    INPUT=$1
 fi
 
 if [[ ! -f $INPUT ]]; then
