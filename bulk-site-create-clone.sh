@@ -17,7 +17,7 @@ echo -e "Welcome to the Pantheon bulk site creation script\n\n"
 
 # Site prefix
 echo -e "What project name would you like to use?"
-echo -e "e.g. 'My Cool Training'\n"
+echo -e "e.g. My Cool Training\n"
 read -p 'Project Name: ' PROJECT_NAME
 PROJECT_SLUG=$(echo "$PROJECT_NAME" | tr '[:upper:]' '[:lower:]')
 PROJECT_SLUG=$(echo "$PROJECT_SLUG" | tr '[:space:]' '-')
