@@ -121,10 +121,17 @@ do
         echo -e "Cloning code, database and files from the $SOURCE to $DESTINATION. This may take a while...\n\n"
         terminus site:clone $SOURCE $DESTINATION --yes
     fi
+	# Add a tag to the site for the project
+    echo -e "Adding the tag $PROJECT_SLUG to the $DESTINATION_NAME site...\n"
+    	terminus tag:add $DESTINATION_NAME ${ORG_UUID} $PROJECT_SLUG
 
 	# Add the user to the Pantheon team
     echo -e "Adding the Pantheon user $PANTHEON_EMAIL to the $DESTINATION_NAME site...\n"
 	terminus site:team:add ${DESTINATION_UUID} ${PANTHEON_EMAIL}
+	
+       # Make the user the owner of the site
+    echo -e "Making the Pantheon user $PANTHEON_EMAIL the owner of the $DESTINATION_NAME site...\n"
+       terminus owner:set $DESTINATION_NAME ${PANTHEON_EMAIL}
 
 # if we are not at the end of the file, we are not done, loop again
 done < $INPUT
