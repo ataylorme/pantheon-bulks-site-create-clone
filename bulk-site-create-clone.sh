@@ -121,9 +121,12 @@ do
         echo -e "Cloning code, database and files from the $SOURCE to $DESTINATION. This may take a while...\n\n"
         terminus site:clone $SOURCE $DESTINATION --yes
     fi
+    
 	# Add a tag to the site for the project
-    echo -e "Adding the tag $PROJECT_SLUG to the $DESTINATION_NAME site...\n"
-    	terminus tag:add $DESTINATION_NAME ${ORG_UUID} $PROJECT_SLUG
+    if [ ! -z $ORG_UUID ]; then
+	echo -e "Adding the tag $PROJECT_SLUG to the $DESTINATION_NAME site...\n"
+	terminus tag:add $DESTINATION_NAME ${ORG_UUID} $PROJECT_SLUG
+    fi
 
 	# Add the user to the Pantheon team
     echo -e "Adding the Pantheon user $PANTHEON_EMAIL to the $DESTINATION_NAME site...\n"
