@@ -129,12 +129,12 @@ do
     fi
 
 	# Add the user to the Pantheon team
-    echo -e "Adding the Pantheon user $PANTHEON_EMAIL to the $DESTINATION_NAME site...\n"
+	echo -e "Adding the Pantheon user $PANTHEON_EMAIL to the $DESTINATION_NAME site...\n"
 	terminus site:team:add ${DESTINATION_UUID} ${PANTHEON_EMAIL}
 	
        # Make the user the owner of the site
-    echo -e "Making the Pantheon user $PANTHEON_EMAIL the owner of the $DESTINATION_NAME site...\n"
-       terminus owner:set $DESTINATION_NAME ${PANTHEON_EMAIL}
+       # echo -e "Making the Pantheon user $PANTHEON_EMAIL the owner of the $DESTINATION_NAME site...\n"
+       # terminus owner:set $DESTINATION_NAME ${PANTHEON_EMAIL}
 
 # if we are not at the end of the file, we are not done, loop again
 done < $INPUT
